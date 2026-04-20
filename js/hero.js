@@ -44,7 +44,7 @@ class HeroAnimation {
 
     animate() {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        
+
         // Draw Subtle Grid
         this.drawGrid();
 
@@ -52,12 +52,12 @@ class HeroAnimation {
             // Mouse Interaction (Repulsion)
             const dx = this.mouse.x - p.x;
             const dy = this.mouse.y - p.y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
+            const dist = Math.sqrt(dx * dx + dy * dy);
             const force = Math.max(0, (200 - dist) / 200);
-            
+
             if (dist < 200) {
-                p.x -= (dx/dist) * force * 5;
-                p.y -= (dy/dist) * force * 5;
+                p.x -= (dx / dist) * force * 5;
+                p.y -= (dy / dist) * force * 5;
             }
 
             // Return to original position slowly
@@ -84,9 +84,9 @@ class HeroAnimation {
             this.particles.forEach(p2 => {
                 const dxx = p.x - p2.x;
                 const dyy = p.y - p2.y;
-                const d = Math.sqrt(dxx*dxx + dyy*dyy);
+                const d = Math.sqrt(dxx * dxx + dyy * dyy);
                 if (d < 150) {
-                    this.ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - d/150)})`;
+                    this.ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - d / 150)})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(p.x, p.y);
@@ -110,10 +110,10 @@ class HeroAnimation {
             for (let y = 0; y < this.height; y += 20) {
                 const dx = this.mouse.x - x;
                 const dy = this.mouse.y - y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
+                const dist = Math.sqrt(dx * dx + dy * dy);
                 const offset = Math.max(0, (300 - dist) / 300) * 30;
-                
-                const drawX = x + (dx/dist) * -offset;
+
+                const drawX = x + (dx / dist) * -offset;
                 if (y === 0) this.ctx.moveTo(drawX, y);
                 else this.ctx.lineTo(drawX, y);
             }
@@ -126,10 +126,10 @@ class HeroAnimation {
             for (let x = 0; x < this.width; x += 20) {
                 const dx = this.mouse.x - x;
                 const dy = this.mouse.y - y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
+                const dist = Math.sqrt(dx * dx + dy * dy);
                 const offset = Math.max(0, (300 - dist) / 300) * 30;
-                
-                const drawY = y + (dy/dist) * -offset;
+
+                const drawY = y + (dy / dist) * -offset;
                 if (x === 0) this.ctx.moveTo(x, drawY);
                 else this.ctx.lineTo(x, drawY);
             }

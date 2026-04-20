@@ -15,37 +15,36 @@
 </head>
 
 <body>
-    <div class="cursor-follower"></div>
-    <div class="cursor-dot"></div>
-    <div class="grid-overlay"></div>
+    <div class="bg-layer">
+        <div class="cursor-follower"></div>
+        <div class="cursor-dot"></div>
+        <div class="grid-overlay"></div>
+        <canvas id="hero-canvas"></canvas>
+    </div>
 
-    <header
-        style="position: fixed; width: 100%; padding: 2rem 4rem; z-index: 100; display: flex; justify-content: space-between; align-items: center;">
-        <div class="logo"
-            style="font-family: var(--font-heading); font-weight: 900; font-size: 1.5rem; letter-spacing: 0.3em;">SPACER
-        </div>
-        <nav style="display: flex; gap: 3rem; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">
+    <header class="navbar">
+        <div class="logo">SPACER</div>
+        <nav>
             <a href="#about" style="color: white; text-decoration: none;">About</a>
             <a href="programs/index.html" style="color: white; text-decoration: none;">Programs</a>
             <a href="#" style="color: white; text-decoration: none;">Community</a>
-            <a href="#"
-                style="color: white; text-decoration: none; border: 1px solid white; padding: 0.5rem 1rem; margin-top: -0.5rem;">Join</a>
+            <a href="#" class="join-btn">Join</a>
         </nav>
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-content">
-                <h1 class="hero-title reveal-text">WHERE ARCHITECTS<br>DON’T JUST LEARN —<br>THEY EVOLVE</h1>
-                <p class="hero-subtext">Studio-based learning. Real workflows. Future-ready skills.</p>
-                <a href="#programs" class="cta-button">[ Explore Programs ]</a>
-            </div>
-            </header>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title reveal-text">WHERE ARCHITECTS<br>DON’T JUST LEARN —<br>THEY EVOLVE</h1>
+                    <p class="hero-subtext">Studio-based learning. Real workflows. Future-ready skills.</p>
+                    <a href="#programs" class="cta-button">[ Explore Programs ]</a>
+                </div>
+            </section>
 
             <!-- What is SPACER -->
-            <section id="about" class="container">
+            <section id="about">
                 <div class="split-section">
                     <div class="split-left">
                         <h2 class="reveal" style="font-size: 3rem;">A Studio for the<br>Digital Age.</h2>
@@ -61,7 +60,7 @@
             </section>
 
             <!-- What You Learn -->
-            <section class="container">
+            <section>
                 <div class="reveal" style="text-align: center; margin-bottom: 4rem;">
                     <h2 style="font-size: 4rem;">The Stack</h2>
                 </div>
@@ -83,7 +82,7 @@
             </section>
 
             <!-- Programs Preview -->
-            <section id="programs" class="container">
+            <section id="programs">
                 <div class="reveal"
                     style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem;">
                     <h2 style="font-size: 4rem;">PROGRAMS</h2>
@@ -104,7 +103,7 @@
                         </div>
                     </div>
                     <!-- Program Card 2 -->
-                    <div class="program-card reveal" style="margin-top: 4rem;">
+                    <div class="program-card reveal">
                         <img src="assets/program2.png" class="program-image" alt="Unreal Realities">
                         <canvas class="card-canvas-2"
                             style="position: absolute; top:0; left:0; width:100%; height:100%;"></canvas>
@@ -119,7 +118,7 @@
             </section>
 
             <!-- Outcomes -->
-            <section class="container" style="text-align: center;">
+            <section style="text-align: center;">
                 <div class="reveal">
                     <h2 style="font-size: 8vw; opacity: 0.1; line-height: 0.8; margin-bottom: -1rem;">OUTCOMES</h2>
                     <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; height: 500px;">
@@ -142,7 +141,7 @@
             </section>
 
             <!-- Founder Section -->
-            <section class="container">
+            <section>
                 <div class="split-section">
                     <div class="split-left reveal" style="padding-right: 5rem;">
                         <h2 style="font-size: 1.5rem; margin-bottom: 2rem;">FROM THE STUDIO</h2>
@@ -161,7 +160,7 @@
             </section>
 
             <!-- Final CTA -->
-            <section class="hero" style="height: 60vh;">
+            <section class="hero" style="min-height: 60vh;">
                 <div class="hero-content reveal">
                     <h2 style="font-size: 5rem; line-height: 0.9;">START YOUR<br>EVOLUTION.</h2>
                     <div style="margin-top: 4rem;">
@@ -170,8 +169,8 @@
                 </div>
             </section>
 
-            <footer class="container"
-                style="padding: 4rem 4rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em;">
+            <footer
+                style="padding: 4rem 0; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em;">
                 <div>© 2026 SPACER DIGITAL ACADEMY</div>
                 <div style="display: flex; gap: 2rem;">
                     <a href="#" style="color: inherit; text-decoration: none;">Instagram</a>
@@ -179,6 +178,7 @@
                     <a href="#" style="color: inherit; text-decoration: none;">LinkedIn</a>
                 </div>
             </footer>
+        </div>
     </main>
 
     <script src="js/hero.js"></script>
