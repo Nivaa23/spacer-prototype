@@ -333,7 +333,8 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none; /* Let hover rely on the card itself */
+    pointer-events: none;
+    /* Let hover rely on the card itself */
 }
 
 .program-card:hover .program-info {
@@ -366,11 +367,16 @@ section {
         font-size: 4rem;
     }
 
-    body, *, .navbar, .nav-link, .join-btn {
+    body,
+    *,
+    .navbar,
+    .nav-link,
+    .join-btn {
         cursor: auto !important;
     }
 
-    .cursor-follower, .cursor-dot {
+    .cursor-follower,
+    .cursor-dot {
         display: none !important;
     }
 }

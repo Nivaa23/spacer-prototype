@@ -120,8 +120,8 @@ initCardCanvases();
 function initProgramScroll() {
     const wrapper = document.querySelector('.programs-wrapper');
     const cards = gsap.utils.toArray('.program-card');
-    
-    if(!wrapper || cards.length === 0) return;
+
+    if (!wrapper || cards.length === 0) return;
 
     const tl = gsap.timeline({
         scrollTrigger: {
