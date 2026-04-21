@@ -115,3 +115,55 @@ function initCardCanvases() {
     });
 }
 initCardCanvases();
+
+// Program Stacked Scroll Interaction
+function initProgramScroll() {
+    const wrapper = document.querySelector('.programs-wrapper');
+    const cards = gsap.utils.toArray('.program-card');
+    
+    if(!wrapper || cards.length === 0) return;
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1, // Slow down scroll progression with smooth interpolation
+        }
+    });
+
+    cards.forEach((card, i) => {
+        // Initial setup
+        if (i === 0) {
+            gsap.set(card, { opacity: 1, y: 0, scale: 1, zIndex: i + 1 });
+        } else {
+            gsap.set(card, { opacity: 0, y: window.innerHeight * 0.8, scale: 0.9, zIndex: i + 1 });
+        }
+
+        // Timeline progression
+        if (i > 0) {
+            // Next card emerges from below
+            tl.to(card, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1,
+                ease: "power2.inOut" // cinematic smooth easing
+            }, i); // Sequence exactly at i
+
+            // Previous card moves slightly upward and fades out with depth scale
+            tl.to(cards[i - 1], {
+                opacity: 0,
+                y: -100, // Move up
+                scale: 0.95, // Depth feeling
+                duration: 1,
+                ease: "power2.inOut"
+            }, i);
+        }
+    });
+}
+
+// Ensure the scroll trigger initializes after render
+window.addEventListener('load', () => {
+    initProgramScroll();
+});
