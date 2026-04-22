@@ -85,85 +85,111 @@ window.addEventListener('load', () => {
         .to('.cta-button', { opacity: 1, y: 0, duration: 1, ease: "power4.out" }, "-=0.8");
 });
 
-// Card Canvases (Simple geometric patterns)
-function initCardCanvases() {
-    const cards = document.querySelectorAll('.program-card canvas');
-    cards.forEach((canvas, index) => {
-        const ctx = canvas.getContext('2d');
-        const w = 400;
-        const h = 600;
-        canvas.width = w;
-        canvas.height = h;
-
-        function draw() {
-            ctx.clearRect(0, 0, w, h);
-            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-            ctx.lineWidth = 1;
-
-            // Draw abstract architectural lines
-            const time = Date.now() * 0.0005;
-            for (let i = 0; i < 10; i++) {
-                ctx.beginPath();
-                const offset = Math.sin(time + i) * 50;
-                ctx.moveTo(0, h / 2 + offset + i * 10);
-                ctx.lineTo(w, h / 2 - offset + i * 10);
-                ctx.stroke();
-            }
-            requestAnimationFrame(draw);
-        }
-        draw();
+// Filter UI Logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Simple visual feedback only for prototype
+        gsap.fromTo('.program-card-new',
+            { opacity: 0, scale: 0.95 },
+            { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" }
+        );
     });
+});
+
+// Modal Logic
+const programModal = document.getElementById('program-modal');
+
+function openModal(title, category, duration, level, tools, image) {
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-category').textContent = category;
+    document.getElementById('modal-duration').textContent = duration;
+    document.getElementById('modal-level').textContent = level;
+    document.getElementById('modal-tools').textContent = tools;
+    if (image) {
+        document.getElementById('modal-image').src = 'assets/' + image;
+    }
+    programModal.classList.add('active');
+
+    // Add custom cursor scale up for close button
+    gsap.to(cursorFollower, { scale: 1, background: 'white', border: 'none' });
+    gsap.to(cursorDot, { scale: 1 });
 }
-initCardCanvases();
 
-// Program Stacked Scroll Interaction
-function initProgramScroll() {
-    const wrapper = document.querySelector('.programs-wrapper');
-    const cards = gsap.utils.toArray('.program-card');
+function closeModal() {
+    programModal.classList.remove('active');
+}
 
-    if (!wrapper || cards.length === 0) return;
+// Add cursor interaction to new elements
+document.querySelectorAll('.filter-btn, .close-modal').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        gsap.to(cursorFollower, { scale: 3, background: 'rgba(255,255,255,0.1)', border: '1px solid white' });
+        gsap.to(cursorDot, { scale: 2 });
+    });
+    el.addEventListener('mouseleave', () => {
+        gsap.to(cursorFollower, { scale: 1, background: 'white', border: 'none' });
+        gsap.to(cursorDot, { scale: 1 });
+    });
+});
 
-    const tl = gsap.timeline({
+document.querySelectorAll('.program-card-stacked').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        gsap.to(cursorFollower, { scale: 4, background: 'rgba(255,255,255,0.05)', border: '1px solid var(--text-color)' });
+        gsap.to(cursorDot, { scale: 0 });
+    });
+    el.addEventListener('mouseleave', () => {
+        gsap.to(cursorFollower, { scale: 1, background: 'white', border: 'none' });
+        gsap.to(cursorDot, { scale: 1 });
+    });
+});
+
+// Initialize Stacked Scroll Experience
+const programCards = gsap.utils.toArray('.program-card-stacked');
+if (programCards.length) {
+    const parent = document.querySelector('.programs-wrapper');
+    const sticky = document.querySelector('.programs-sticky');
+
+    // Create timeline pinned to wrapper
+    let tl = gsap.timeline({
         scrollTrigger: {
-            trigger: wrapper,
+            trigger: parent,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1, // Slow down scroll progression with smooth interpolation
+            scrub: 1 // smooth scrubbing
         }
     });
 
-    cards.forEach((card, i) => {
-        // Initial setup
-        if (i === 0) {
-            gsap.set(card, { opacity: 1, y: 0, scale: 1, zIndex: i + 1 });
+    programCards.forEach((card, index) => {
+        // First card is fully visible at start
+        if (index === 0) {
+            gsap.set(card, { autoAlpha: 1, y: 0, scale: 1 });
         } else {
-            gsap.set(card, { opacity: 0, y: window.innerHeight * 0.8, scale: 0.9, zIndex: i + 1 });
+            // Other cards start below and transparent (completely hidden from pointer events)
+            gsap.set(card, { autoAlpha: 0, y: 60, scale: 0.98 });
         }
 
-        // Timeline progression
-        if (i > 0) {
-            // Next card emerges from below
-            tl.to(card, {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 1,
-                ease: "power2.inOut" // cinematic smooth easing
-            }, i); // Sequence exactly at i
+        if (index < programCards.length - 1) {
+            const nextCard = programCards[index + 1];
 
-            // Previous card moves slightly upward and fades out with depth scale
-            tl.to(cards[i - 1], {
-                opacity: 0,
-                y: -100, // Move up
-                scale: 0.95, // Depth feeling
+            // When scrolling, current card fades down (keeps visibility:visible)
+            tl.to(card, {
+                opacity: 0.6,
+                scale: 0.95,
+                y: -30,
                 duration: 1,
                 ease: "power2.inOut"
-            }, i);
+            }, index * 2)
+
+                // At same time, next card emerges from below (autoAlpha toggles visibility)
+                .to(nextCard, {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power2.inOut"
+                }, index * 2);
         }
     });
 }
-
-// Ensure the scroll trigger initializes after render
-window.addEventListener('load', () => {
-    initProgramScroll();
-});

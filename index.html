@@ -82,83 +82,228 @@
                 </div>
             </section>
 
+            <!-- Why SPACER -->
+            <section id="why-spacer">
+                <div class="reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 4rem;">NOT A COURSE.<br>A STUDIO.</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 2rem auto; font-size: 1.25rem;">
+                        We don’t do pre-recorded tutorials. We simulate real-world workflows that accelerate your career
+                        in spatial design.
+                    </p>
+                </div>
+            </section>
+
+            <!-- How Spacer Works -->
+            <section id="how-it-works" style="padding: 4rem 0;">
+                <div class="reveal" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 style="font-size: 3rem;">THE PROCESS</h2>
+                </div>
+                <div class="process-grid reveal">
+                    <div class="process-step">
+                        <span class="step-num">01</span>
+                        <h4>INPUT</h4>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-secondary);">Core concepts and
+                            advanced toolsets taught live.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">02</span>
+                        <h4>PROCESS</h4>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-secondary);">Guided workflows
+                            mapping to industry standards.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">03</span>
+                        <h4>APPLICATION</h4>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-secondary);">Hands-on studio
+                            exercises to solve generative problems.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">04</span>
+                        <h4>OUTPUT</h4>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-secondary);">Production of
+                            portfolio-ready artifacts.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">05</span>
+                        <h4>FEEDBACK</h4>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-secondary);">Direct critique
+                            from industry mentors.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Programs Preview -->
             <section id="programs">
                 <div class="reveal"
-                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem;">
-                    <h2 style="font-size: 4rem;">PROGRAMS</h2>
-                    <a href="programs/index.html" style="color: var(--text-secondary); text-transform: uppercase;">View
-                        All -></a>
+                    style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 2rem;">
+                    <h2 style="font-size: 4rem; margin-bottom: 2rem;">PROGRAMS</h2>
+
+                    <!-- Filter UI -->
+                    <div class="filter-ui"
+                        style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; width: 100%;">
+                        <button class="filter-btn active">All</button>
+                        <button class="filter-btn">Computational</button>
+                        <button class="filter-btn">Visualization</button>
+                        <button class="filter-btn">Generative AI</button>
+                    </div>
                 </div>
+
                 <div class="programs-wrapper">
                     <div class="programs-sticky">
                         <!-- Program Card 1 -->
-                        <div class="program-card">
-                            <img src="assets/program1.png" class="program-image" alt="Parametric Landscapes">
-                            <canvas class="card-canvas"
-                                style="position: absolute; top:0; left:0; width:100%; height:100%;"></canvas>
-                            <div class="program-info">
-                                <span
-                                    style="font-size:0.7rem; letter-spacing: 0.2em; color: var(--accent-color);">COMPUTATIONAL</span>
-                                <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">Parametric Landscapes</h3>
-                                <p style="font-size:1rem; opacity: 0.8; max-width: 400px; margin-bottom: 2rem;">Master
-                                    Grasshopper workflows to manipulate terrain and environmental driven logic.</p>
-                                <p style="font-size:0.8rem; font-weight: bold; text-transform: uppercase;">12 Weeks ·
-                                    Advanced</p>
+                        <div class="program-card-stacked"
+                            onclick="openModal('Parametric Landscapes', 'Computational', '12 Weeks', 'Advanced', 'Rhino, Grasshopper', 'program1.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/program1.png" class="program-image" alt="Parametric Landscapes">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">COMPUTATIONAL</span>
+                                <h3>Parametric Landscapes</h3>
+                                <div class="program-meta">
+                                    <span>12 Weeks</span>
+                                    <span>Advanced</span>
+                                </div>
                             </div>
                         </div>
                         <!-- Program Card 2 -->
-                        <div class="program-card">
-                            <img src="assets/program2.png" class="program-image" alt="Unreal Realities">
-                            <canvas class="card-canvas-2"
-                                style="position: absolute; top:0; left:0; width:100%; height:100%;"></canvas>
-                            <div class="program-info">
-                                <span
-                                    style="font-size:0.7rem; letter-spacing: 0.2em; color: var(--accent-color);">VISUALIZATION</span>
-                                <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">Unreal Realities</h3>
-                                <p style="font-size:1rem; opacity: 0.8; max-width: 400px; margin-bottom: 2rem;">Build
-                                    immersive, real-time cinematic architectural experiences in Unreal Engine 5.</p>
-                                <p style="font-size:0.8rem; font-weight: bold; text-transform: uppercase;">8 Weeks ·
-                                    Intermediate</p>
+                        <div class="program-card-stacked"
+                            onclick="openModal('Unreal Realities', 'Visualization', '8 Weeks', 'Intermediate', 'Unreal Engine 5', 'program2.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/program2.png" class="program-image" alt="Unreal Realities">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">VISUALIZATION</span>
+                                <h3>Unreal Realities</h3>
+                                <div class="program-meta">
+                                    <span>8 Weeks</span>
+                                    <span>Intermediate</span>
+                                </div>
                             </div>
                         </div>
                         <!-- Program Card 3 -->
-                        <div class="program-card">
-                            <img src="assets/hero.png" class="program-image" alt="Generative Forms">
-                            <canvas class="card-canvas-3"
-                                style="position: absolute; top:0; left:0; width:100%; height:100%;"></canvas>
-                            <div class="program-info">
-                                <span
-                                    style="font-size:0.7rem; letter-spacing: 0.2em; color: var(--accent-color);">GENERATIVE
-                                    AI</span>
-                                <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">Synthetic Topologies</h3>
-                                <p style="font-size:1rem; opacity: 0.8; max-width: 400px; margin-bottom: 2rem;">Use AI
-                                    models to hallucinate structural possibilities and bridge the gap to 3D production.
-                                </p>
-                                <p style="font-size:0.8rem; font-weight: bold; text-transform: uppercase;">4 Weeks ·
-                                    Masterclass</p>
+                        <div class="program-card-stacked"
+                            onclick="openModal('Synthetic Topologies', 'Generative AI', '4 Weeks', 'Masterclass', 'Stable Diffusion, Midjourney', 'hero.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/hero.png" class="program-image" alt="Synthetic Topologies">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">GENERATIVE AI</span>
+                                <h3>Synthetic Topologies</h3>
+                                <div class="program-meta">
+                                    <span>4 Weeks</span>
+                                    <span>Masterclass</span>
+                                </div>
                             </div>
                         </div>
+                        <!-- Program Card 4 -->
+                        <div class="program-card-stacked"
+                            onclick="openModal('Python for Rhino', 'Computational', '6 Weeks', 'Beginner', 'Python, Rhino3D', 'program1.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/program1.png" class="program-image" alt="Python for Rhino"
+                                    style="filter: hue-rotate(90deg) grayscale(80%) brightness(0.6);">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">COMPUTATIONAL</span>
+                                <h3>Python for Rhino</h3>
+                                <div class="program-meta">
+                                    <span>6 Weeks</span>
+                                    <span>Beginner</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Program Card 5 -->
+                        <div class="program-card-stacked"
+                            onclick="openModal('V-Ray Studio Lighting', 'Visualization', '4 Weeks', 'Intermediate', 'V-Ray, Post-Production', 'program2.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/program2.png" class="program-image" alt="V-Ray Studio Lighting"
+                                    style="filter: hue-rotate(180deg) grayscale(80%) brightness(0.6);">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">VISUALIZATION</span>
+                                <h3>V-Ray Studio Lighting</h3>
+                                <div class="program-meta">
+                                    <span>4 Weeks</span>
+                                    <span>Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Program Card 6 -->
+                        <div class="program-card-stacked"
+                            onclick="openModal('AI Workflows in Revit', 'Generative AI', '8 Weeks', 'Advanced', 'Revit, Dynamo, AI APIs', 'hero.png')">
+                            <div class="card-image-wrapper">
+                                <img src="assets/hero.png" class="program-image" alt="AI Workflows in Revit"
+                                    style="filter: hue-rotate(270deg) grayscale(80%) brightness(0.6);">
+                            </div>
+                            <div class="program-info-new">
+                                <span class="program-badge">GENERATIVE AI</span>
+                                <h3>AI Workflows in Revit</h3>
+                                <div class="program-meta">
+                                    <span>8 Weeks</span>
+                                    <span>Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal" style="text-align: center; margin-top: 4rem;">
+                    <a href="programs/index.html" class="cta-button">[ Explore All Programs ]</a>
+                </div>
+            </section>
+
+            <!-- Learning Experience -->
+            <section id="experience" style="padding-top: 4rem;">
+                <div class="reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 3rem;">THE EXPERIENCE</h2>
+                </div>
+                <div class="experience-grid reveal">
+                    <div class="experience-card">
+                        <h3>Live Sessions</h3>
+                        <p>Interactive studio sessions focused on problem-solving, not just software tutorials.</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>1-on-1 Mentorship</h3>
+                        <p>Weekly milestone reviews by leading computational designers.</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Studio Assignments</h3>
+                        <p>Real-world briefs simulating high-pressure agency environments.</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Portfolio Output</h3>
+                        <p>Graduate with production-ready assets tailored for A-Tier firms.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Outcomes -->
-            <section style="text-align: center;">
+            <section id="outcomes" style="text-align: center;">
                 <div class="reveal">
                     <h2 style="font-size: 8vw; opacity: 0.1; line-height: 0.8; margin-bottom: -1rem;">OUTCOMES</h2>
-                    <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; height: 500px;">
-                        <div style="flex: 1; height: 100%; overflow: hidden;" class="reveal">
+                    <div
+                        style="display: flex; gap: 2rem; align-items: stretch; justify-content: center; height: 500px;">
+                        <div style="flex: 1; height: 100%; position: relative;" class="reveal">
                             <img src="assets/program1.png"
                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+                            <div class="outcome-label">
+                                <span class="label-badge">STUDENT OUTPUT</span>
+                                <div class="label-title">Generative Facade</div>
+                            </div>
                         </div>
-                        <div style="flex: 1.5; height: 100%; overflow: hidden;" class="reveal">
+                        <div style="flex: 1.5; height: 100%; position: relative;" class="reveal">
                             <img src="assets/hero.png"
                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+                            <div class="outcome-label">
+                                <span class="label-badge">PORTFOLIO WORK</span>
+                                <div class="label-title">AI-Driven Morphology</div>
+                            </div>
                         </div>
-                        <div style="flex: 1; height: 100%; overflow: hidden;" class="reveal">
+                        <div style="flex: 1; height: 100%; position: relative;" class="reveal">
                             <img src="assets/program2.png"
                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+                            <div class="outcome-label">
+                                <span class="label-badge">STUDENT OUTPUT</span>
+                                <div class="label-title">Unreal Environment</div>
+                            </div>
                         </div>
                     </div>
                     <p class="reveal" style="max-width: 600px; margin: 4rem auto; font-size: 1.25rem;">We measure
@@ -206,6 +351,54 @@
             </footer>
         </div>
     </main>
+
+    <!-- Program Detail Modal -->
+    <div id="program-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-header">
+                    <img id="modal-image" src="assets/program1.png" alt="Program">
+                </div>
+                <div class="modal-info-scroll">
+                    <span class="program-badge" id="modal-category">COMPUTATIONAL</span>
+                    <h2 id="modal-title">Parametric Landscapes</h2>
+                    <div class="program-meta">
+                        <span id="modal-duration">12 Weeks</span>
+                        <span id="modal-level">Advanced</span>
+                    </div>
+
+                    <div class="modal-section">
+                        <h4>OVERVIEW</h4>
+                        <p class="modal-desc" id="modal-desc">This program dives deep into advanced algorithms for
+                            creating environment-aware architectural forms.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h4>TOOLS USED</h4>
+                        <p class="modal-tools" id="modal-tools">Rhino 7, Grasshopper</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h4>MODULES</h4>
+                        <ul class="modal-modules">
+                            <li>Week 1-3: Foundations & Data Trees</li>
+                            <li>Week 4-6: Attractors & Surface Manipulation</li>
+                            <li>Week 7-9: Advanced Generation</li>
+                            <li>Week 10-12: Final Studio Output</li>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center; margin-top: 2rem;">[ Enroll
+                        Now ]</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/hero.js"></script>
     <script src="js/main.js"></script>
